@@ -1,0 +1,47 @@
+% BEGIN PREAMBEL
+\documentclass[9pt]{beamer}
+\usepackage[british]{babel}
+\usepackage{multimedia}
+\input{extrapackages}
+\input{newcommands}
+\input{settings}
+% END PREAMBEL
+
+\begin{document}
+
+% ============= TITLE PAGE =============
+\include{TitlePage}
+
+% ============= TABLE OF CONTENTS ======
+\begin{frame}[allowframebreaks]
+	\frametitle{Table of contents}
+	\tableofcontents   % [pausesections]
+\end{frame}
+
+% ============= MOTIVATION =============
+\section{Motivation}
+\include{Motivation}
+
+% ============= DIAMONDS ===============
+\section{Diamond Detectors and Materials}
+\include{Diamonds}
+
+% ============= RATE ===================
+\section{Rate Studies at PSI}
+\include{Rate}
+
+% ============= 3D =====================
+\section{3D Detectors at CERN}
+\include{3D}
+
+% ============= EDGE TCT ===============
+% \section{Edge TCT}
+% \include{EdgeTCT}
+
+% ============= CONCLUSION =============
+\section{Conclusion}
+\include{Conclusion}
+
+% DOCUMENT END
+\end{document}
+

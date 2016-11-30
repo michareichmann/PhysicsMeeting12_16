@@ -1,3 +1,4 @@
+% BEGIN GENERAL INFORMATION
 \subsection{General information}
 \begin{frame}
 	\frametitle{Proton Accelerator at Paul Scherrer Institute (PSI)}
@@ -26,7 +27,7 @@
 % ============================ new frame ==========================================>
 \begin{frame}
 	\frametitle{Beam line at Paul Scherrer Institute (PSI)}
-	\begin{minipage}[c][.6\textheight]{6.5cm}
+	\begin{minipage}[c][.75\textheight]{6.5cm}
 		\begin{itemize}
 			\setlength{\itemsep}{\fill}
 			\item using beam line $\uppi$M1 with \SI{260}{\mega\electronvolt\per c} positive pions ($\uppi^+$)
@@ -68,6 +69,8 @@
 	\end{figure}
 \end{frame}
 % ============================ new frame ==========================================>
+% END
+% BEGIN SETUP
 \subsection{Setup}
 \begin{frame}
 	\frametitle{Setup}
@@ -77,7 +80,7 @@
 	\end{figure}
 	\begin{itemize}
 		\setlength{\itemsep}{\fill}
-		\item 4 tracking planes with analogue CMS pixel chips
+		\item 4 tracking planes with analogue CMS pixel chips \ra provide scalable trigger
 		\item 2 diamond pad detectors
 		\item scintillator for precise trigger timing: sigma of \SI{1.3\pm.1}{ns}
 		\item resolution: \SI{\sim80x50}{\micro\meter}
@@ -98,6 +101,25 @@
 		\item EUDAQ as DAQ framework
 	\end{itemize}
 \end{frame}
+% ============================ FRAME 16 ==========================================>
+\begin{frame}
+	\frametitle{Trigger Logic}
+	\begin{minipage}[c][.5\textheight]{4cm}
+		\begin{itemize}
+			\setlength{\itemsep}{\fill}
+			\item complicated trigger logic
+			\item long setup time
+			\item error prone
+			\item varying cable length
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{8cm}
+		\begin{figure}
+			\centering
+			\includegraphics[width=7cm]{TrigLog}
+		\end{figure}
+	\end{minipage}
+\end{frame}
 % ============================ new frame ==========================================>
 \begin{frame}
 	\frametitle{DAQ}
@@ -106,12 +128,31 @@
 		\includegraphics[width=.8\textwidth]{Intro}
 	\end{figure}
 	\begin{itemize}
-		\item custom-built trigger unit to process the single triggers and provide global one for all devices
+		\item trigger unit to provide global trigger for all devices
 		\item saving event based data stream as binary file using EUDAQ
 	\end{itemize}
 \end{frame}
 % ============================ new frame ==========================================>
-\subsection{Analysis and Results}
+\begin{frame}
+	\frametitle{Trigger unit (TU)}
+	\begin{figure}
+		\centering
+		\includegraphics[width=.8\textwidth]{tu}
+	\end{figure}
+	\begin{itemize}
+		\setlength{\itemsep}{\fill}
+		\item handles (almost) all trigger logic of the setup with VHDL based FPGA system
+		\item offers scalers for the input triggers, pad signals and beam current
+		\item internal pulser as reference signal
+		\item pre-scalers to guarantee stable pulser rates
+		\item coincidence and handshake logic
+	\end{itemize}
+\end{frame}
+% ============================ new frame ==========================================>
+% END
+% BEGIN ANALYSIS
+\subsection{Analysis}
+% ============================ FRAME 18 ==========================================>
 \begin{frame}
 	\frametitle{Waveforms}
 	\vspace*{-20pt}
@@ -125,26 +166,57 @@
 		\item system does not allow signals in pre-signal bucket due to fastOR trigger deadtime
 	\end{itemize}
 \end{frame}
-% ============================ new frame ==========================================>
+% ============================ FRAME 19 ==========================================>
 \begin{frame}
 	\frametitle{Pulse Height Calculation}
+	\vspace*{-5pt}
 	\begin{center}
 		\includegraphics[angle=270, width=.8\textwidth]{intpeaks}\\
 	\end{center}
+	\vspace*{-5pt}
 	\begin{itemize}
 		\setlength{\itemsep}{\fill}
 		\item finding the peak in the signal region
 		\item integrating the signal in time fixed asymmetric integral around peak
-		\item same integration for pedestal (base line $\rightarrow$ noise)
+		\item time averaging
+		\item same procedure for pedestal (base line $\rightarrow$ noise)
 		\item optimising the integral width by highest SNR (Integral / Pedestal Sigma)
 		\item subtracting the pedestal from the signal integral on event-wise basis 
 	\end{itemize}
 \end{frame}
-% ============================ FRAME 18 ==========================================>
+% ============================ FRAME 20 ==========================================>
+\begin{frame}
+	\frametitle{Event based cuts}
+	\vspace*{-7pt}
+	\begin{figure} 
+		\begin{center}
+			\begin{subfigure}{0.45\textwidth}  
+				\centering 
+				\includegraphics[angle=270, width=.85\textwidth]{DistoNoCuts}
+				\caption{no cuts}
+			\end{subfigure}
+			\ra
+			\begin{subfigure}{0.45\textwidth} 
+				\centering 
+				\includegraphics[angle=270, width=.85\textwidth]{DistoCuts}
+				\caption{all cuts} 	
+			\end{subfigure} 
+		\end{center}
+	\end{figure}
+	\vspace*{-7pt}
+	\begin{itemize}
+		\setlength{\itemsep}{\fill}
+		\item many undesirable events in the full data (no signal, pulser, multiple hits, $\hdots$)
+		\item apply cuts to select only signal events (diamond hit by a single pion)
+	\end{itemize}
+\end{frame}
+% END 
+% BEGIN RESULTS
+\subsection{Results}
 \begin{frame}
 	\frametitle{Pulse Height Distribution and Signal Maps}
 	\vspace*{-7.5pt}
-	\def \sp {0.65\textwidth}
+	\def \sp {0.62\textwidth}
 	\begin{figure}
 		\centering
 		\begin{subfigure}{0.45\textwidth} 
@@ -199,3 +271,4 @@
 		\end{figure}
 	\end{minipage}
 \end{frame}
+% END

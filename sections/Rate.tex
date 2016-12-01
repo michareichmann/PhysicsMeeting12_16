@@ -5,7 +5,7 @@
 	\begin{itemize}
 		\setlength{\itemsep}{\fill}
 		\item High Intensity Proton Accelerator (HIPA) at PSI (Cyclotron)
-		\item \SI{590}{\mega\electronvolt} proton beam with beam current up to \SI{2.4}{\milli\ampere}
+		\item \SI{590}{\mega\electronvolt} proton beam with beam current up to \SI{2.4}{\milli\ampere} (\SI{1.5e16}{protons\per s})
 		\begin{itemize}
 			\vspace*{4pt}
 			\item \SI{\sim1.4}{\mega\watt} \ra most powerful proton accelerator in the world
@@ -141,9 +141,9 @@
 	\end{figure}
 	\begin{itemize}
 		\setlength{\itemsep}{\fill}
-		\item handles (almost) all trigger logic of the setup with VHDL based FPGA system
-		\item offers scalers for the input triggers, pad signals and beam current
-		\item internal pulser as reference signal
+		\item handles (almost) all trigger logic of the setup with FPGA system
+		\item provides scalers (counter) for the input triggers, pad signals and beam current
+		\item sends calibration pulses as reference signal
 		\item pre-scalers to guarantee stable pulser rates
 		\item coincidence and handshake logic
 	\end{itemize}
@@ -152,7 +152,7 @@
 % END
 % BEGIN ANALYSIS
 \subsection{Analysis}
-% ============================ FRAME 18 ==========================================>
+% ============================ FRAME 19 ==========================================>
 \begin{frame}
 	\frametitle{Waveforms}
 	\vspace*{-20pt}
@@ -166,7 +166,7 @@
 		\item system does not allow signals in pre-signal bucket due to fastOR trigger deadtime
 	\end{itemize}
 \end{frame}
-% ============================ FRAME 19 ==========================================>
+% ============================ FRAME 20 ==========================================>
 \begin{frame}
 	\frametitle{Pulse Height Calculation}
 	\vspace*{-5pt}
@@ -184,7 +184,7 @@
 		\item subtracting the pedestal from the signal integral on event-wise basis 
 	\end{itemize}
 \end{frame}
-% ============================ FRAME 20 ==========================================>
+% ============================ FRAME 21 ==========================================>
 \begin{frame}
 	\frametitle{Event based cuts}
 	\vspace*{-7pt}
@@ -210,6 +210,170 @@
 		\item apply cuts to select only signal events (diamond hit by a single pion)
 	\end{itemize}
 \end{frame}
+% ============================ FRAME 22 ==========================================>
+\begin{frame}
+	\frametitle{Cuts (1)}
+	\begin{minipage}{8cm}
+		\textbf{\underline{saturated:}}
+		\begin{itemize}
+			\setlength{\itemsep}{\fill}
+			\item saturated waveforms
+			\item most likely protons
+		\end{itemize}
+		\vspace*{1cm}
+		\textbf{\underline{pulser:}}
+		\begin{itemize}
+			\setlength{\itemsep}{\fill}
+			\item reference events with different timing
+			\item no signal in signal region
+		\end{itemize}
+		\vspace*{1cm}
+		\textbf{\underline{tracks:}}
+		\begin{itemize}
+			\setlength{\itemsep}{\fill}
+			\item only take events with exactly one cluster in each tracking plane
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{4cm}
+		\vspace*{-5pt}
+		\begin{figure}
+			\centering
+			\includegraphics[angle=270, width=3.5cm]{Sat}
+			\vspace*{-8pt}
+			\caption{saturated waveform}
+		\end{figure}
+		\vspace*{-25pt}
+		\begin{figure}
+			\centering
+			\includegraphics[angle=270, width=3.5cm]{Pul}
+			\vspace*{-8pt}
+			\caption{pulser waveform}
+		\end{figure}
+	\end{minipage}
+\end{frame}
+% ============================ FRAME 23 ==========================================>
+\begin{frame}
+	\frametitle{Cuts (2)}
+	\begin{minipage}{8cm}
+		\textbf{\underline{timing:}}
+		\begin{itemize}
+			\setlength{\itemsep}{\fill}
+			\item signal peak timing follows Gaussian distribution
+			\item discard events with wrong timing (more than \SI{3}{\upsigma})
+			\begin{itemize}
+				\item overlay from waveforms of different buckets
+				\item other particles (electrons, muons)
+			\end{itemize}
+		\end{itemize}
+		\vspace*{1cm}
+		\textbf{\underline{bucket:}}
+		\begin{itemize}
+			\setlength{\itemsep}{\fill}
+			\item two particles in consecutive buckets 
+			\item first one hits the scintillator but not the diamond
+			\item wrong trigger timing (\SI[retain-explicit-plus]{20}{ns})
+			\item no signal in signal region
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{4cm}
+		\vspace*{-2pt}
+		\begin{figure}
+			\centering
+			\includegraphics[angle=270, width=3.2cm]{Timing}
+			\vspace*{-8pt}
+			\caption{signal peak timing}
+		\end{figure}
+		\vspace*{-25pt}
+		\begin{figure}
+			\centering
+			\includegraphics[angle=270, width=3.2cm]{Bucket}
+			\vspace*{-8pt}
+			\caption{bucket pedestal}
+		\end{figure}
+	\end{minipage}
+\end{frame}
+% ============================ FRAME 24 ==========================================>
+\begin{frame}
+	\frametitle{Cuts (3)}
+	\begin{minipage}{8cm}
+		\textbf{\underline{fiducial:}}
+		\begin{itemize}
+			\setlength{\itemsep}{\fill}
+			\item only select uniform physical center area of the diamond 
+			\item exclude edges and guard ring 
+		\end{itemize}
+		\vspace*{1cm}
+		\textbf{\underline{other:}}
+		\begin{itemize}
+			\setlength{\itemsep}{\fill}
+			\item $\upchi^{2}$ in $x$ and $y$ of the track fit
+			\item track angle in $x$ and $y$
+			\item event range
+			\item beam interruptions
+			\item pedestal sigma
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{4cm}
+		\vspace*{-2pt}
+		\begin{figure}
+			\centering
+			\includegraphics[angle=270, width=3.2cm]{FidNo}
+			\vspace*{-8pt}
+			\caption{signal map}
+		\end{figure}
+		\vspace*{-25pt}
+		\begin{figure}
+			\centering
+			\includegraphics[angle=270, width=3.2cm]{Fid}
+			\vspace*{-8pt}
+			\caption{with fiducial cut}
+		\end{figure}
+	\end{minipage}
+\end{frame}
+% ============================ FRAME 25 ==========================================>
+\begin{frame}
+	\vspace*{-5pt}
+	\begin{figure} 
+		\begin{center}
+			\begin{subfigure}{0.45\textwidth}  
+				\centering 
+				\includegraphics[angle=270, width=.85\textwidth]{Cuts}
+% 				\caption{no cuts}
+			\end{subfigure}
+			\begin{subfigure}{0.45\textwidth} 
+				\centering 
+				\includegraphics[angle=270, width=.85\textwidth]{CutsLog}
+% 				\caption{all cuts} 	
+			\end{subfigure} 
+		\end{center}
+	\end{figure}
+	\textbf{\underline{Taken out:}}
+	\begin{itemize}
+		\item saturated events
+		\item pedestal events (no signal)
+		\item multiple hits ($\sim2$ times the signal)
+		\item low signal events (guard ring, edge hits)
+	\end{itemize}
+\end{frame}
+% ============================ FRAME 26 ==========================================>
+\begin{frame}
+	\frametitle{Cut Influence on the Mean Pulse Height}
+% 	\vspace*{-8pt}
+	\begin{figure}
+		\centering
+		\includegraphics[angle=270, width=.7\textwidth]{CutMeans}
+	\end{figure}
+\end{frame}
+% ============================ FRAME 27 ==========================================>
+\begin{frame}
+	\frametitle{Cut Contributions}
+	\vspace*{-17pt}
+	\begin{figure}
+		\centering
+		\includegraphics[angle=270, width=.6\textwidth]{CutContribution}
+	\end{figure}
+\end{frame}
+
 % END 
 % BEGIN RESULTS
 \subsection{Results}

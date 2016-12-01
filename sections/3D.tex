@@ -13,14 +13,14 @@
 	\end{itemize}
 	\begin{figure}
 	  \centering
-	  \begin{subfigure}[b]{0.45\textwidth}
+	  \begin{subfigure}[t]{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{3DScheme}
+		\includegraphics[height=0.4\textheight]{3DScheme}
 		\caption{array of four 3D cells, bias electrodes in red, readout electrodes in green}
 	  \end{subfigure}
-	  \begin{subfigure}[b]{0.45\textwidth}
+	  \begin{subfigure}[t]{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{3D}
+		\includegraphics[height=0.4\textheight]{3D}
 		\caption{3D diamond detector}
 	  \end{subfigure}
 	\end{figure}
@@ -29,30 +29,27 @@
 % ============================ new frame ==========================================>
 \subsection{3D Diamond Detector}
 \begin{frame}
-  \frametitle{3D Diamond Detector}
-  \begin{minipage}[c]{0.5\textwidth}
-    \begin{itemize}
-      \item electrodes formed with a pulsed femto second laser (100 fs pulse; 800 nm wavelength)
-      \begin{itemize}
-	\item transition of diamond to conducting material (graphitic material i.a.)
-      \end{itemize}
+	\frametitle{3D Diamond Detector}
+	\begin{itemize}
+		\item electrodes formed with a pulsed femto second laser (100 fs pulse; 800 nm wavelength)
+		\begin{itemize}
+			\item transition of diamond to conducting material (graphitic material i.a.)
+		\end{itemize}
+		\item tested different geometries (4 or 6 bias columns)
     \end{itemize}
-    \begin{figure}
-      \centering
-      \includegraphics[width=5cm]{raman}
-      \caption{blue: Diamond peak. Orange and black: Graphitic material}
-    \end{figure}
-  \end{minipage}
-  \begin{minipage}{0.45\textwidth}
-    \begin{itemize}
-      \item tested different geometries (4 or 6 bias columns)
-    \end{itemize}
-    \begin{figure}
-      \centering
-      \includegraphics[height=5cm,angle=90]{patterns}
-      \caption{square and hexagonal bias patterns (red) and readout channels (blue).}
-    \end{figure}
-  \end{minipage}
+	\begin{figure}
+		\centering
+		\begin{subfigure}[t]{0.45\textwidth}
+			\centering
+			\includegraphics[width=5cm]{raman}
+			\caption{blue: Diamond peak. Orange and black: Graphitic material}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.45\textwidth}
+			\centering
+			\includegraphics[height=5cm,angle=90]{patterns}
+			\caption{square and hexagonal bias patterns (red) and readout channels (blue).}
+		\end{subfigure}
+	\end{figure}
 \end{frame}
 
 % ============================ new frame ==========================================>
@@ -64,8 +61,6 @@
 		\item using more than 20 years old fixed telescope at SPS at CERN (high spatial resolution)
 		\item testing multiple 3D strip detectors with 120GeV protons
 		\item basic working principle has been proven
-		\item full charge collection not yet achieved in pCVD (>85\%)
-		\item improve fabrication technique
 	\end{itemize}
 	\begin{figure}
 		\centering
@@ -78,25 +73,26 @@
 \begin{frame}
   \frametitle{3D Full detector}
   \begin{itemize}
+	\setlength{\itemsep}{\fill}
     \item more than 2000 laser fabricated columns (1152 square cells)    
-    \item columns yield >90\%
-    \item >85\% charge collection for a corresponding thickness
+    \item columns yield \SI{>90}{\%}
+    \item \SI{>85}{\%} charge collection for a corresponding thickness
   \end{itemize}
-  \begin{figure}
+  \begin{figure}[c]
     \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-      \includegraphics[width=\textwidth]{large_3D_front}
+    \begin{subfigure}[t]{0.3\textwidth}
+      \includegraphics[height=.3\textheight]{large_3D_front}
       \caption{photograph of the metalization pattern in the 3D Full detector}
       \label{fig:3DMetal}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-      \includegraphics[width=\textwidth]{SignalMapFull3D}
+    \begin{subfigure}[t]{0.3\textwidth}
+      \includegraphics[height=.3\textheight]{SignalMapFull3D}
       \caption{signal map of the 3D Full detector. Broken channels due to fabrication mishandling}
       \label{fig:3dSignalMap}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-      \includegraphics[height=\textwidth,angle=-90]{large_3D_good_cells_ph}
-      \caption{Signal histogram of good regions}
+    \begin{subfigure}[t]{0.3\textwidth}
+      \includegraphics[height=.3\textheight]{large_3D_good_cells_ph}
+      \caption{signal distribution of good regions}
       \label{fig:3dhisto}
     \end{subfigure}
   \end{figure}

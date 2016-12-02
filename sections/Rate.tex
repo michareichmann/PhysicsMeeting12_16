@@ -1,153 +1,5 @@
-% BEGIN GENERAL INFORMATION
-\subsection{General information}
-\begin{frame}
-	\frametitle{Proton Accelerator at Paul Scherrer Institute (PSI)}
-	\begin{itemize}
-		\setlength{\itemsep}{\fill}
-		\item High Intensity Proton Accelerator (HIPA) at PSI (Cyclotron)
-		\item \SI{590}{\mega\electronvolt} proton beam with beam current up to \SI{2.4}{\milli\ampere} (\SI{1.5e16}{protons\per s})
-		\begin{itemize}
-			\vspace*{4pt}
-			\item \SI{\sim1.4}{\mega\watt} \ra most powerful proton accelerator in the world
-		\end{itemize}
-		\vspace*{4pt}
-		\item only two comparable accelerators
-		\begin{itemize}
-			\vspace*{4pt}
-			\item TRIUMF in Vancouver (\SI{\sim0.25}{\mega\watt})
-			\item LAMPF in Los Alamos (\SI{\sim0.8}{\mega\watt})
-		\end{itemize}
-% 		\item LHC takes \SI{28}{\minute} to accelerate a full injection (\SI{\sim0.2}{\mega\watt})
-	\end{itemize}
-	\begin{figure}
-		\centering
-		\includegraphics[width=6.5cm]{cyclotron}
-	\end{figure}
-\end{frame}
-% ============================ new frame ==========================================>
-\begin{frame}
-	\frametitle{Beam line at Paul Scherrer Institute (PSI)}
-	\begin{minipage}[c][.75\textheight]{6.5cm}
-		\begin{itemize}
-			\setlength{\itemsep}{\fill}
-			\item using beam line $\uppi$M1 with \SI{260}{\mega\electronvolt\per c} positive pions ($\uppi^+$)
-			\item tunable particle fluxes from \SI{2}{\kilo\hertz\per cm^2} to \SI{10}{\mega\hertz\per cm^2}
-		\end{itemize}
-		\begin{figure}
-			\centering
-			\includegraphics[width=5cm]{pim1}
-		\end{figure}
-	\end{minipage}
-	\begin{minipage}{4.5cm}
-		\begin{figure}
-			\centering
-			\includegraphics[width=5cm]{bpim1}
-		\end{figure}
-	\end{minipage}
-\end{frame}
-% ============================ new frame ==========================================>
-\begin{frame}
-	\frametitle{Measurements}
-	\begin{itemize}
-		\item performing several beam tests starting in $2013$
-		\item using a modular self-built beam telescope with two possible setups:
-			\begin{itemize}
-				\item pad setup (testing whole diamonds as single pad detector)
-				\item pixel setup (testing diamond sensors implanted on CMS-Pixel Chips)
-			\end{itemize}
-		\item investigating several materials and devices
-		\begin{itemize}
-			\item scCVD pad detectors (reproduce rate effect)
-			\item pCVD pad and pixel detectors
-			\item very first 3D pixel detector
-		\end{itemize}
-		\item studying non-irradiated and irradiated devices (up to \SI{1e16}{neq\per cm^2})
-	\end{itemize}
-	\begin{figure}
-		\centering
-		\includegraphics[width=6cm]{pad}
-	\end{figure}
-\end{frame}
-% ============================ new frame ==========================================>
-% END
 % BEGIN SETUP
-\subsection{Setup}
-\begin{frame}
-	\frametitle{Setup}
-	\begin{figure}
-		\centering
-		\includegraphics[width=5.5cm]{Setup}
-	\end{figure}
-	\begin{itemize}
-		\setlength{\itemsep}{\fill}
-		\item 4 tracking planes with analogue CMS pixel chips \ra provide scalable trigger
-		\item 2 diamond pad detectors
-		\item scintillator for precise trigger timing: sigma of \SI{1.3\pm.1}{ns}
-		\item resolution: \SI{\sim80x50}{\micro\meter}
-	\end{itemize}
-\end{frame}
-% ============================ new frame ==========================================>
-\begin{frame}
-	\frametitle{Schematics}
-	\begin{figure}
-		\centering
-		\includegraphics[width=7cm]{SchematicsV2}
-	\end{figure}
-	\begin{itemize}
-		\setlength{\itemsep}{\fill}
-		\item using PSI DRS4 Evaluation Board as digitizer for the pad waveforms
-		\item using Digital Test Board (DTB) and pXar software for the telescope readout
-		\item global trigger as coincidence of fastOR self trigger and scintillator signal
-		\item EUDAQ as DAQ framework
-	\end{itemize}
-\end{frame}
-% ============================ FRAME 16 ==========================================>
-\begin{frame}
-	\frametitle{Trigger Logic}
-	\begin{minipage}[c][.5\textheight]{4cm}
-		\begin{itemize}
-			\setlength{\itemsep}{\fill}
-			\item complicated trigger logic
-			\item long setup time
-			\item error prone
-			\item varying cable length
-		\end{itemize}
-	\end{minipage}
-	\begin{minipage}{8cm}
-		\begin{figure}
-			\centering
-			\includegraphics[width=7cm]{TrigLog}
-		\end{figure}
-	\end{minipage}
-\end{frame}
-% ============================ new frame ==========================================>
-\begin{frame}
-	\frametitle{DAQ}
-	\begin{figure}
-		\centering
-		\includegraphics[width=.8\textwidth]{Intro}
-	\end{figure}
-	\begin{itemize}
-		\item trigger unit to provide global trigger for all devices
-		\item saving event based data stream as binary file using EUDAQ
-	\end{itemize}
-\end{frame}
-% ============================ new frame ==========================================>
-\begin{frame}
-	\frametitle{Trigger unit (TU)}
-	\begin{figure}
-		\centering
-		\includegraphics[width=.8\textwidth]{tu}
-	\end{figure}
-	\begin{itemize}
-		\setlength{\itemsep}{\fill}
-		\item handles (almost) all trigger logic of the setup with FPGA system
-		\item provides scalers (counter) for the input triggers, pad signals and beam current
-		\item sends calibration pulses as reference signal
-		\item pre-scalers to guarantee stable pulser rates
-		\item coincidence and handshake logic
-	\end{itemize}
-\end{frame}
+
 % ============================ new frame ==========================================>
 % END
 % BEGIN ANALYSIS
@@ -355,28 +207,139 @@
 		\item low signal events (guard ring, edge hits)
 	\end{itemize}
 \end{frame}
-% ============================ FRAME 26 ==========================================>
-\begin{frame}
-	\frametitle{Cut Influence on the Mean Pulse Height}
-% 	\vspace*{-8pt}
-	\begin{figure}
-		\centering
-		\includegraphics[angle=270, width=.7\textwidth]{CutMeans}
-	\end{figure}
-\end{frame}
 % ============================ FRAME 27 ==========================================>
 \begin{frame}
 	\frametitle{Cut Contributions}
-	\vspace*{-17pt}
-	\begin{figure}
-		\centering
-		\includegraphics[angle=270, width=.6\textwidth]{CutContribution}
-	\end{figure}
+	\begin{minipage}{4cm}
+		\begin{itemize}
+			\item stable pulser rate around \SIrange{10}{20}{\%}
+			\item many events with incomplete or multiple tracks
+			\item \SIrange{30}{40}{\%} good events after cuts
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{8cm}
+% 		\vspace*{-17pt}
+		\begin{figure}
+			\centering
+			\includegraphics[angle=270, width=.9\textwidth]{CutContribution}
+		\end{figure}
+	\end{minipage}
+\end{frame}
+% ============================ FRAME 26 ==========================================>
+\begin{frame}
+	\frametitle{Cut Influence on the Mean Pulse Height}
+	\begin{minipage}{4cm}
+		\begin{itemize}
+			\item very few saturated events
+			\item pulser takes out pedestal events
+			\item tracks discard multiple hits
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{8cm}
+		\begin{figure}
+			\centering
+			\includegraphics[angle=270, width=.9\textwidth]{CutMeans}
+		\end{figure}
+	\end{minipage}
 \end{frame}
 
 % END 
 % BEGIN RESULTS
 \subsection{Results}
+% ============================ new frame ==========================================>
+\begin{frame}
+	\frametitle{Signal vs. Particle Flux}
+	\begin{minipage}[c][.75\textheight]{.5\textwidth}
+		\begin{itemize}
+			\setlength{\itemsep}{\fill}
+			\item after all analysis steps: look for rate dependence of pCVD diamonds
+			\item found diamond pad detectors that show no or very little dependence on rate
+			\item no dependence up to \SI{2e15}{neq\per cm^2}
+			\item large systematic errors due to reproducibility
+		\end{itemize}
+		\vspace*{3pt}
+		\textbf{\underline{To do:}}
+		\begin{itemize}
+			\setlength{\itemsep}{\fill}
+			\item test higher irradiated samples
+			\item improve reproducibility
+			\item check the same for pixel detectors
+		\end{itemize}
+	\end{minipage}
+	\hspace*{5pt}
+	\begin{minipage}{.45\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\textwidth]{rateplot}
+		\end{figure}
+	\end{minipage}
+\end{frame}
+% ============================ new frame ==========================================>
+\begin{frame}
+	\frametitle{Non-Irradiated Single Crystalline Diamond}
+	\def \sp {3.7cm}
+	\begin{minipage}{\sp}
+		\centering
+		October 2015 
+		\includegraphics[width=\sp]{CPH1510_03}\\
+		noise $\upsigma\approx$ \SI{2.6}{au}
+	\end{minipage}
+	\hspace*{2pt}
+	\begin{minipage}{\sp}
+		\centering
+		August 2016
+		\includegraphics[width=\sp]{CPH1608_8_1}\\
+		noise $\upsigma\approx$ \SI{2.6}{au}
+	\end{minipage}
+	\hspace*{2pt}
+	\begin{minipage}{\sp}
+		\centering
+		October 2016
+		\includegraphics[width=\sp]{CPH1610_8_1}\\
+		noise $\upsigma \approx$ \SI{2.6}{au}
+	\end{minipage}\s
+	\begin{itemize}
+		\item measurements taken under the same conditions
+		\item noise stays the same
+		\item pulse height very stable
+	\end{itemize}
+\end{frame}
+% ============================ new frame ==========================================>
+\begin{frame}
+	\frametitle{Poly crystalline diamond}
+	\begin{minipage}{2.8cm}
+		\centering
+		August 2016 - \\unirradiated
+		\includegraphics[width=3cm]{CPH1508_13_2.pdf}\\
+		noise $\upsigma\approx$ \SI{4.9}{au}
+	\end{minipage}
+	\hspace*{2pt}
+	\begin{minipage}{2.8cm}
+		\centering
+		October 2015 - \SI[exponent-product = \cdot]{5e14}{n/cm^{2}}
+		\includegraphics[width=3cm]{CPH1510_08_2.pdf}\\
+		noise $\upsigma\approx$ \SI{4.9}{au}
+	\end{minipage}
+	\hspace*{2pt}
+	\begin{minipage}{2.8cm}
+		\centering
+		August 2016 - \SI[exponent-product = \cdot]{1e15}{n/cm^{2}}
+		\includegraphics[width=3cm]{CPH1608_09_1.pdf}\\
+		noise $\upsigma \approx$ \SI{4.9}{au}
+	\end{minipage}
+	\hspace*{2pt}
+	\begin{minipage}{2.8cm}
+		\centering
+		October 2016 - \SI[exponent-product = \cdot]{2e15}{n/cm^{2}}
+		\includegraphics[width=3cm]{CPH1610_6_1.pdf}\\
+		noise $\upsigma \approx$ \SI{4.9}{au}
+	\end{minipage}\s
+	\begin{itemize}
+		\item pulse height very stable after irradiation
+		\item noise stays the same
+	\end{itemize}
+\end{frame}
+% ============================ FRAME 31 ==========================================>
 \begin{frame}
 	\frametitle{Pulse Height Distribution and Signal Maps}
 	\vspace*{-7.5pt}
@@ -406,92 +369,6 @@
 			\caption{poly-crystalline}
 		\end{subfigure} 
 	\end{figure}
-\end{frame}
-% ============================ new frame ==========================================>
-\begin{frame}
-	\frametitle{Signal vs. Particle Flux}
-	\begin{minipage}[c][.75\textheight]{.5\textwidth}
-		\begin{itemize}
-			\setlength{\itemsep}{\fill}
-			\item after all analysis steps: look for rate dependence of pCVD diamonds
-			\item found diamond pad detectors that show no or very little dependence on rate
-			\item no dependence up to \SI{1e16}{neq\per cm^2}
-			\item large systematic errors due to reproducibility
-		\end{itemize}
-		\vspace*{3pt}
-		\textbf{To do:}
-		\begin{itemize}
-			\setlength{\itemsep}{\fill}
-			\item test higher irradiated samples
-			\item improve reproducibility
-			\item prove the same for pixel detectors
-		\end{itemize}
-	\end{minipage}
-	\hspace*{5pt}
-	\begin{minipage}{.45\textwidth}
-		\begin{figure}
-			\centering
-			\includegraphics[width=\textwidth]{rateplot}
-		\end{figure}
-	\end{minipage}
-\end{frame}
-% ============================ new frame ==========================================>
-\begin{frame}
-	\frametitle{Single crystalline diamond}
-	\def \sp {3.7cm}
-	\begin{minipage}{\sp}
-		\centering
-		October 2015 
-		\includegraphics[width=\sp]{CPH1608_03}\\
-		noise $\upsigma\approx$ \SI{2.6}{au}
-	\end{minipage}
-	\hspace*{2pt}
-	\begin{minipage}{\sp}
-		\centering
-		August 2016 - begin
-		\includegraphics[width=\sp]{CPH1510_08_1}\\
-		noise $\upsigma\approx$ \SI{2.6}{au}
-	\end{minipage}
-	\hspace*{2pt}
-	\begin{minipage}{\sp}
-		\centering
-		August 2016 - end
-		\includegraphics[width=\sp]{CPH1510_18_1}\\
-		noise $\upsigma \approx$ \SI{2.6}{au}
-	\end{minipage}\s
-	\begin{itemize}
-		\item measurements taken under the same conditions
-		\item noise stays the same
-		\item pulse height very stable
-	\end{itemize}
-\end{frame}
-% ============================ new frame ==========================================>
-\begin{frame}
-	\frametitle{Poly crystalline diamond}
-	\begin{minipage}{3.7cm}
-		\centering
-		August 2016 - \\unirradiated
-		\includegraphics[width=3.7cm]{CPH1508_13_2.pdf}\\
-		noise $\upsigma\approx$ \SI{4.9}{au}
-	\end{minipage}
-	\hspace*{2pt}
-	\begin{minipage}{3.7cm}
-		\centering
-		October 2015 - \SI[exponent-product = \cdot]{5e14}{n/cm^{2}}
-		\includegraphics[width=3.7cm]{CPH1510_08_2.pdf}\\
-		noise $\upsigma\approx$ \SI{4.9}{au}
-	\end{minipage}
-	\hspace*{2pt}
-	\begin{minipage}{3.7cm}
-		\centering
-		August 2016 - \SI[exponent-product = \cdot]{1e15}{n/cm^{2}}
-		\includegraphics[width=3.7cm]{CPH1608_09_1_2.pdf}\\
-		noise $\upsigma \approx$ \SI{4.9}{au}
-	\end{minipage}\s
-	\begin{itemize}
-		\item pulse height very stable after irradiation
-		\item noise stays the same
-	\end{itemize}
 \end{frame}
 % ============================ new frame ==========================================>
 \begin{frame}
